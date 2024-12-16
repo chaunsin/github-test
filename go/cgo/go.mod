@@ -1,4 +1,4 @@
-module github.com/chaunsin/github-test/go
+module github.com/chaunsin/github-test/go/cgo
 
 go 1.23.3
 

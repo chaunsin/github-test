@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/chaunsin/github-test/go/sqlite"
+	"github.com/chaunsin/github-test/go/cgo/sqlite"
 )
 
 func main() {
