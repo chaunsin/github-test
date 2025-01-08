@@ -9,7 +9,7 @@ on:
   push:
     branches: [ "" ]
     tags:
-      - "v"
+      - "v*"
   workflow_dispatch:
     inputs:
       debug_enabled:
