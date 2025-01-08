@@ -15,7 +15,7 @@ on:
       debug_enabled:
         description: "用于手动触发测试"
         required: true
-        default: "true"      
+        default: "true"
 
 permissions:
   contents: write
