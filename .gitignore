@@ -773,3 +773,5 @@ go.work.sum
 
 # SQLite database
 *.db
+
+note.md
