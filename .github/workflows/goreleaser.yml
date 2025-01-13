@@ -63,7 +63,7 @@ jobs:
         run: |
           echo "Changelog:"
           echo "${{ steps.changelog.outputs.changelog }}"
-          echo "${{ steps.changelog.outputs.changelog }}" > CHANGELOG.md
+          echo "${{ steps.changelog.outputs.changelog }}" > note.md
           echo "Compare URL: ${{ steps.changelog.outputs.compareurl }}"
           echo "GitHub Pages Hash: ${{ steps.changelog.outputs.gh-pages-hash }}"
 
@@ -76,7 +76,7 @@ jobs:
           distribution: goreleaser
           # 'latest', 'nightly', or a semver
           version: "~> v2"
-          args: release --clean --release-notes=./CHANGELOG.md
+          args: release --clean --release-notes=./note.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
