@@ -24,6 +24,9 @@ jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
+      - name: 设置 GPG_TTY 环境变量
+        run: echo "GPG_TTY=$(tty)" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -73,6 +76,12 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
+
+      - name: Configure GPG for non-interactive mode
+        run: |
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpg-connect-agent reloadagent /bye    
 
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
