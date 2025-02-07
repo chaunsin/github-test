@@ -127,6 +127,7 @@ signs:
     cmd: gpg2
     args:
       - "--batch"
+      - "--no-tty"
       - "--pinentry-mode"
       - "loopback"
       - "-u"
