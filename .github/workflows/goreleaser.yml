@@ -81,6 +81,7 @@ jobs:
         run: |
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo "batch" >> ~/.gnupg/gpg.conf
           gpg-connect-agent reloadagent /bye    
 
       # More assembly might be required: Docker logins, GPG, etc.
