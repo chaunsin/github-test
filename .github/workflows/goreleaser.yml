@@ -82,9 +82,14 @@ jobs:
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           echo "batch" >> ~/.gnupg/gpg.conf
-          gpg-connect-agent reloadagent /bye    
+          gpg-connect-agent reloadagent /bye
 
-      # More assembly might be required: Docker logins, GPG, etc.
+      - name: List GPG keys
+        run: |
+          gpg2 --list-keys
+          echo "GPG Fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
+
+    # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
