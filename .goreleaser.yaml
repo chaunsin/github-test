@@ -26,7 +26,6 @@ before:
 builds:
   - env:
       - CGO_ENABLED=0
-      - GPG_TTY=$(tty)
     # 当项目的根目录不是go项目，需要指定目录位置,反之则直接使用main即可
     dir: ./go/nocgo/
     #main: ./go/nocgo/
