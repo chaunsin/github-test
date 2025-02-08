@@ -89,7 +89,7 @@ jobs:
           gpg2 --list-keys
           echo "GPG Fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
 
-    # More assembly might be required: Docker logins, GPG, etc.
+      # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
@@ -108,3 +108,6 @@ jobs:
           GNUPGHOME: /tmp/gnupg
           GPG_OPTS: --batch --pinentry-mode loopback
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
+
+      - name: List File
+        run: ls -l ./dist
