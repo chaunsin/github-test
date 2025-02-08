@@ -62,10 +62,11 @@ jobs:
       - name: Print Changelog
         run: |
           echo "Changelog:"
-          echo "${{ steps.changelog.outputs.changelog }}"
-          echo "${{ steps.changelog.outputs.changelog }}" > note.md
-          echo "Compare URL: ${{ steps.changelog.outputs.compareurl }}"
           echo "GitHub Pages Hash: ${{ steps.changelog.outputs.gh-pages-hash }}"
+          echo "Compare URL: ${{ steps.changelog.outputs.compareurl }}"
+          echo "Compare URL: ${{ steps.changelog.outputs.compareurl }}" > note.md
+          echo "${{ steps.changelog.outputs.changelog }}"
+          echo "${{ steps.changelog.outputs.changelog }}" >> note.md
 
       - name: Import GPG key
         id: import_gpg
