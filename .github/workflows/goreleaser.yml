@@ -18,7 +18,7 @@ permissions:
   contents: write
   # packages: write
   # issues: write
-  id-token: write
+  # id-token: write
 
 jobs:
   goreleaser:
@@ -89,7 +89,3 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
-          ## 强制非交互模式
-          #GNUPGHOME: /tmp/gnupg
-          #GPG_OPTS: --batch --pinentry-mode loopback
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}

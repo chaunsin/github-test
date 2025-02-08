@@ -127,9 +127,6 @@ signs:
     cmd: gpg2
     args:
       - "--batch"
-      #- "-pinentry-mode=loopback"
-      #- "-passphrase"
-      #- "{{ .Env.PASSPHRASE }}"
       - "-u"
       - "{{ .Env.GPG_FINGERPRINT }}"
       - "--output"
