@@ -112,7 +112,7 @@ archives:
     # use zip for windows archives
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [ 'zip' ]
 #    allow_different_binary_count: true
 
 changelog:
@@ -129,7 +129,7 @@ signs:
       - "--batch"
       - "-pinentry-mode=loopback"
       - "-passphrase"
-      - "${{ .Env.PASSPHRASE }}"
+      - "{{ .Env.PASSPHRASE }}"
       - "-u"
       - "{{ .Env.GPG_FINGERPRINT }}"
       - "--output"
