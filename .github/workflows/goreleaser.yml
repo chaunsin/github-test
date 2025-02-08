@@ -18,15 +18,12 @@ permissions:
   contents: write
   # packages: write
   # issues: write
-  # id-token: write
+  id-token: write
 
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
     steps:
-      #- name: 设置 GPG_TTY 环境变量
-      #  run: echo "GPG_TTY=$(tty)" >> $GITHUB_ENV
-
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -77,18 +74,6 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
 
-      #- name: Configure GPG for non-interactive mode
-      #  run: |
-      #    echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-      #    echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-      #    echo "batch" >> ~/.gnupg/gpg.conf
-      #    gpg-connect-agent reloadagent /bye
-
-      - name: List GPG keys
-        run: |
-          gpg2 --list-keys
-          echo "GPG Fingerprint: ${{ steps.import_gpg.outputs.fingerprint }}"
-
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: Run GoReleaser
@@ -104,10 +89,7 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
-          # 强制非交互模式
-          GNUPGHOME: /tmp/gnupg
-          GPG_OPTS: --batch --pinentry-mode loopback
+          ## 强制非交互模式
+          #GNUPGHOME: /tmp/gnupg
+          #GPG_OPTS: --batch --pinentry-mode loopback
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
-
-      - name: List File
-        run: ls -l ./dist
