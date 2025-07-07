@@ -4,5 +4,4 @@
 
 - git代码提交的基本使用
 - github工作流
-
-1.this is a first init!
+- markdown图表[MARKDOWN.md](MARKDOWN.md)
