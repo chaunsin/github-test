@@ -2,9 +2,9 @@ name: goreleaser
 
 on:
   pull_request:
-    branches: [ "" ]
+    branches: [ "*" ]
   push:
-    branches: [ "" ]
+    branches: [ "*" ]
     tags:
       - "v*"
   workflow_dispatch:
